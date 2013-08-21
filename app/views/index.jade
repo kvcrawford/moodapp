@@ -1,0 +1,14 @@
+!!!5
+html
+	head
+		title #{title}
+		script(src="http://code.jquery.com/jquery-latest.min.js")
+
+	body
+		form(method='post',action='/users/new')
+			input(type='text',name='username',placeholder='Username')
+			input(type='submit')
+
+		for user in users
+			a(href='/users/#{user.username}') #{user.username}
+				br

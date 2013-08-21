@@ -1,0 +1,14 @@
+{
+	"name": "moodapp",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "3.3.4",
+		"mongoose": "*",
+		"express-mongoose": "*",
+		"socket.io": "*",
+		"passport-local": "*",
+		"bcrypt": "*",
+		"connect-flash": "*",
+		"jade": "*"
+	}
+}
