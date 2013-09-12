@@ -3,12 +3,17 @@ html
 	head
 		title #{title}
 		script(src="http://code.jquery.com/jquery-latest.min.js")
+		script(src="/script/bootstrap.min.js")
+		link(rel='stylesheet', href="/style/bootstrap.min.css")
+		link(rel='stylesheet', href="/style/bootstrap-theme.css")
 
 	body
-		form(method='post',action='/users/new')
-			input(type='text',name='username',placeholder='Username')
-			input(type='submit')
 
-		for user in users
-			a(href='/users/#{user.username}') #{user.username}
-				br
+		div(class="container")
+			form(method='post',action='/users/new')
+				input(type='text',name='username',placeholder='Username')
+				input(type='submit')
+
+			for user in users
+				a(href='/users/#{user.username}') #{user.username}
+					br

@@ -3,20 +3,25 @@ html
 	head
 		title #{title}
 		script(src="http://code.jquery.com/jquery-latest.min.js")
+		script(src="/script/bootstrap.min.js")
+		link(rel='stylesheet', href="/style/bootstrap.min.css")
+		link(rel='stylesheet', href="/style/bootstrap-theme.css")
 
 	body
-		form(method='post',action='/users/#{user.username}')
-			input(type='range',name='mood',max='10',min='1',value='5')
-			textarea(name='comments',placeholder='Write something positive.')
-			input(type='submit')
 
-		table()
-			tr
-				th Date
-				th Mood
-				th Comments
-			for post in posts
-				tr(id="#{post._id}")
-					td #{post.date}
-					td #{post.mood}
-					td #{post.comments}
+		div(class="container")
+			form(method='post',action='/users/#{user.username}')
+				input(type='range',name='mood',max='10',min='1',value='5')
+				textarea(name='comments',placeholder='Write something positive.')
+				input(type='submit')
+
+			table()
+				tr
+					th Date
+					th Mood
+					th Comments
+				for post in posts
+					tr(id="#{post._id}")
+						td #{post.date}
+						td #{post.mood}
+						td #{post.comments}

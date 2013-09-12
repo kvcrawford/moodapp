@@ -14,7 +14,6 @@ module.exports = function(app, express, mongoose){
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(app.router);
-    app.use(express.static(__dirname + '/public'));
     app.use(express.logger());
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
   });
