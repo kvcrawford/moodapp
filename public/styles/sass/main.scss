@@ -1,0 +1,72 @@
+// SASS/Compass Lib
+@import "compass/css3/border-radius";
+
+$icon-font-path: "/bootstrap/fonts/";
+@import "../../bootstrap/sass/bootstrap";
+
+body {
+  padding-top: 50px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+  .jumbotron {
+    h1 {
+      font-size: 48px;
+    }
+  }
+}
+
+header {
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+form {
+  input[type=range] {
+    -webkit-appearance: none;
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin: 20px 0;
+    background: #222;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none !important;
+      width: 24px;
+      height: 24px;
+      @include border-radius(12px);
+      background: #222;
+      cursor: pointer;
+
+      &:hover,
+      &:active {
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(91, 157, 217);
+      }
+    }
+    &:focus::-webkit-slider-thumb {
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(91, 157, 217);
+    }
+  }
+
+  label {
+    &.min {
+      text-align: right;
+    }
+    &.max {
+      text-align: left;
+    }
+  }
+  textarea {
+    width: 100%;
+    margin: 0 0 1rem;
+  }
+}
