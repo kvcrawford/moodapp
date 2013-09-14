@@ -38,7 +38,7 @@ app.get('/users/:user', function(req,res){
 				.exec(function(err, posts){
 					if(err) console.log(err);
 					console.log(user._id);
-					res.render('user', 
+					res.render('user',
 						{ title: 'Posts for ' + user.username, user: user, posts: posts },
 						function(err,html){
 							if(err) console.log(err);
@@ -60,7 +60,7 @@ app.post('/users/new', function(req,res){
 	})
 });
 
-app.post('/users/:user', function(req,res){
+app.post('/users/:user/post/new', function(req,res){
 	query = models.User.findOne({ username: req.params.user });
 	promise = query.exec();
 	promise.addBack(function(err, user){
@@ -85,6 +85,31 @@ app.post('/users/:user', function(req,res){
 					});
 			}
 		);
+	});
+});
+
+app.get('/users/:user/post/new', function(req, res){
+	models.User.findOne({ username: req.params.user }, function(err, user){
+		if(err) console.log(err);
+		console.log(models.Post.count);
+
+		models.Post.count({ _creator: user._id }, function(err, count){
+			var rand = Math.floor(Math.random() * (count));
+
+			models.Post.findOne({ _creator: user._id }).skip(rand).exec(function(err, post){
+					res.render('users/new',
+						{
+							title: "Success!",
+							user: user,
+							post: post
+						},
+						function(err, html){
+							if(err) console.log(err);
+							res.send(html);
+						}
+					);
+				});
+		});
 	});
 });
 

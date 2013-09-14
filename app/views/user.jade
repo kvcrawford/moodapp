@@ -15,7 +15,7 @@ html
 			div.container
 				h1 How are you feeling today?
 
-				form(method='post',action='/users/#{user.username}')
+				form(method='post',action='/users/#{user.username}/post/new')
 
 					fieldset.mood
 						label(for='input_mood') Rate your mood
