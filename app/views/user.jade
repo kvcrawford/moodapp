@@ -2,18 +2,34 @@
 html
 	head
 		title #{title}
-		script(src="http://code.jquery.com/jquery-latest.min.js")
-		script(src="/script/bootstrap.min.js")
-		link(rel='stylesheet', href="/style/bootstrap.min.css")
-		link(rel='stylesheet', href="/style/bootstrap-theme.css")
+		script(src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+		//- script(src="/script/bootstrap.min.js")
+		link(rel='stylesheet', href="/styles/css/main.css")
 
 	body
+		header.navbar.navbar-inverse.navbar-fixed-top
+			div.container
+				a.navbar-brand(href='/users/#{user.username}') mood app
+
+		section.jumbotron
+			div.container
+				h1 How are you feeling today?
+
+				form(method='post',action='/users/#{user.username}')
+
+					fieldset.mood
+						label(for='input_mood') Rate your mood
+						div.row
+							label.col-xs-1.min(for='input_mood') 1
+							div.col-xs-10
+								input(type='range', name='mood', id='input_mood' max='10', min='1', value='5', autofocus)
+							label.col-xs-1.max(for='input_mood') 10
+
+					textarea(name='comments',placeholder='Write something positive.')
+					input(type='submit')
 
 		div(class="container")
-			form(method='post',action='/users/#{user.username}')
-				input(type='range',name='mood',max='10',min='1',value='5')
-				textarea(name='comments',placeholder='Write something positive.')
-				input(type='submit')
+
 
 			table()
 				tr
