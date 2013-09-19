@@ -81,7 +81,7 @@ app.post('/users/:user/post/new', function(req,res){
 					.populate({ path: '_creator', select: '_id' })
 					.exec(function(err, post){
 						console.log(post);
-						res.redirect('/users/'+req.params.user);
+						res.redirect('/users/'+req.params.user +'/post/new');
 					});
 			}
 		);
